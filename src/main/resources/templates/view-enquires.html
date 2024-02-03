@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>View Enquiries</title>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+	<div class="container mt-5">
+		<div class="row">
+			<div class="col-12 text-right mb-3">
+				<a href="logout" class="btn btn-danger">Logout</a> <a
+					href="/dashboard" class="btn btn-home">Home</a>
+			</div>
+		</div>
+
+		<h2>View Enquiries</h2>
+
+		<form class="mb-3">
+			<div class="form-row">
+				<div class="form-group col-md-3">
+					<label for="courseFilter">Filter by Course:</label> <select
+						id="courseFilter" class="form-control">
+						<option value="all">All Courses</option>
+						<option value="javaFullStack">Java Full Stack</option>
+						<option value="devOps">Dev Ops</option>
+						<option value="jrtp">Jrtp</option>
+					</select>
+				</div>
+				<div class="form-group col-md-3">
+					<label for="classModeFilter">Filter by Class Mode:</label> <select
+						id="classModeFilter" class="form-control">
+						<option value="all">All Modes</option>
+						<option value="online">Online</option>
+						<option value="offline">Offline</option>
+					</select>
+				</div>
+				<div class="form-group col-md-3">
+					<label for="enquiryStatusFilter">Filter by Enquiry Status:</label>
+					<select id="enquiryStatusFilter" class="form-control">
+						<option value="all">All Statuses</option>
+						<option value="new">New</option>
+						<option value="enrolled">Enrolled</option>
+						<option value="lost">Lost</option>
+					</select>
+				</div>
+			</div>
+		</form>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Student Name</th>
+					<th>Contact Number</th>
+					<th>Class Mode</th>
+					<th>Course</th>
+					<th>Enquiry Status</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>John Doe</td>
+					<td>123-456-7890</td>
+					<td>Online</td>
+					<td>Java Full Stack</td>
+					<td>New</td>
+					<td>
+						<button class="btn btn-primary" onclick="editEnquiry('John Doe')">Edit</button>
+					</td>
+				</tr>
+				<tr>
+					<td>Jane Smith</td>
+					<td>987-654-3210</td>
+					<td>Offline</td>
+					<td>Dev Ops</td>
+					<td>Enrolled</td>
+					<td>
+						<button class="btn btn-primary" onclick="editEnquiry('John Doe')">Edit</button>
+					</td>
+				</tr>
+				<tr>
+					<td>Bob Johnson</td>
+					<td>555-123-4567</td>
+					<td>Online</td>
+					<td>Jrtp</td>
+					<td>Lost</td>
+					<td>
+						<button class="btn btn-primary" onclick="editEnquiry('John Doe')">Edit</button>
+					</td>
+				</tr>
+				<!-- Add more rows as needed -->
+			</tbody>
+		</table>
+	</div>
+
+	<!-- Bootstrap JS and jQuery (place these scripts at the end of the body) -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

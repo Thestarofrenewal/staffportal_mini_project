@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th=www.thymeleaf.org>
+<head>
+<meta charset="UTF-8">
+<title>Student Enquiry Form</title>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+	<div class="container mt-5">
+		<div class="row">
+			<div class="col-12 text-right mb-3">
+				<a href="logout" class="btn btn-danger">Logout</a>
+			</div>
+		</div>
+
+		<h2>Student Enquiry Form</h2>
+		<p th:text="${succMsg}" class="text-success">
+		<p th:text="${errMsg}" class="text-danger">
+		<form th:action="@{/addEnq}" th:object="${formObj}" method="POST"
+			id="enquiryForm">
+			<!-- ... (rest of the form remains unchanged) -->
+			<div class="form-group">
+				<label for="studentName">Student Name:</label> <input type="text"
+					th:field="*{studentName}" id="studentName" name="studentName"
+					class="form-control" required>
+			</div>
+
+			<div class="form-group">
+				<label for="contactNumber">Contact Number:</label> <input
+					type="text" th:field="*{studentPhno}" id="contactNumber"
+					name="contactNumber" class="form-control" required>
+			</div>
+
+			<div class="form-group">
+				<label for="classMode">Class Mode:</label> <select id="classMode"
+					th:field="*{classMode}" name="classMode" class="form-control"
+					required>
+					<option value="">-Select-</option>
+					<option value="online">Online</option>
+					<option value="classroom">Classroom</option>
+
+				</select>
+			</div>
+
+			<div class="form-group">
+				<label for="course">Course:</label> <select id="course"
+					name="course" th:field="*{courseName}" class="form-control"
+					required>
+					<option value="">-Select-</option>
+					<option th:each="course : ${courseNames}" th:value="${course}"
+						th:text="${course}"></option>
+
+				</select>
+			</div>
+
+			<div class="form-group">
+				<label for="enquiryStatus">Enquiry Status:</label> <select
+					id="enquiryStatus" th:field="*{enqStatus}" name="enquiryStatus"
+					class="form-control" required>
+					<option value="">-Select-</option>
+					<option th:each="status : ${statusNames}" th:value="${status}"
+						th:text="${status}"></option>
+
+				</select>
+			</div>
+			<a href=dashboard class="btn btn-home">Home</a> <input type="submit"
+				class="btn btn-primary" value="Submit Enquiry" />
+		</form>
+	</div>
+
+	<!-- Bootstrap JS and jQuery (place these scripts at the end of the body) -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+	<script>
+		function submitEnquiry() {
+			var form = document.getElementById("enquiryForm");
+
+			if (form.checkValidity()) {
+				// You can add further logic here, like sending the enquiry to the server.
+				alert("Enquiry submitted successfully!");
+			} else {
+				// Bootstrap will handle displaying validation errors.
+			}
+		}
+	</script>
+
+</body>
+</html>
+

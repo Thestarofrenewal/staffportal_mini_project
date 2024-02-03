@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th=www.thymeleaf.org>
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #f4f4f4;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        .count-info {
+            margin-bottom: 20px;
+        }
+
+        .count-info p {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+
+        .btn-dashboard, .btn-home {
+            padding: 10px 20px;
+            display: inline-block;
+            border-radius: 5px;
+            margin: 0 5px;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+        }
+
+        .btn-dashboard:hover, .btn-home:hover {
+            background-color: #0056b3;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .btn-logout {
+            background-color: #dc3545;
+            color: #fff;
+            padding: 10px 20px;
+            display: block;
+            margin: 0 auto;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+            text-decoration: none;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            border: none;
+        }
+
+        .btn-logout:hover {
+            background-color: #c82333;
+            color: #fff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Dashboard</h1>
+
+        <div class="count-info">
+            <h2>Total Inquiries :</h2><p th:text="${dashboardData.totalEnqyiryCnt}"/>
+            <h2>Enrolled :</h2><p th:text="${dashboardData.enrolledCnt}"/>
+            <h2>Lost :</h2><p th:text="${dashboardData.lostCnt}"/>
+        </div>
+
+        <a href="enquiry" class="btn btn-dashboard">Add Enquiry</a>
+        <a href="enquires" class="btn btn-dashboard">View Enquiries</a>
+    </div>
+
+    <a href="logout" class="btn btn-logout">Log Out</a>
+
+    <!-- Your JavaScript code to update the counts would go here -->
+
+    <!-- Bootstrap JS and jQuery (place these scripts at the end of the body) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script>
+        // Sample JavaScript to update the counts (replace this with your actual logic)
+        $(document).ready(function() {
+            // Assume these are your actual counts, you can fetch them from your backend
+            var totalInquiriesCount = 100;
+            var enrolledCount = 50;
+            var lostCount = 10;
+
+            // Update the HTML with the counts
+            $('#totalInquiries').text(totalInquiriesCount);
+            $('#enrolled').text(enrolledCount);
+            $('#lost').text(lostCount);
+        });
+    </script>
+</body>
+</html>

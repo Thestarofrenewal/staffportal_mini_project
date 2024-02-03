@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-form {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        .form-heading {
+            color: #495057;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+
+        .btn-login {
+            background-color: #007bff;
+            color: #fff;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            padding: 10px;
+            display: inline-block;
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        .btn-login:hover {
+            background-color: #0056b3;
+            text-decoration: none;
+        }
+
+        .forgot-signup {
+            color: #6c757d;
+        }
+
+        .forgot-signup:hover {
+            text-decoration: none;
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="login-form">
+            <h1 class="form-heading mb-4">Login</h1>
+            <p th:text="${errMsg}" class="text-danger"/>
+            <form id="loginForm" th:action="@{/login}" th:object="${loginForm}" method="POST">
+                <div class="form-group">
+                    <input type="text" th:field="*{email}" id="username" name="username" class="form-control" placeholder="Username" required>
+                    <div class="invalid-feedback">Please enter your username.</div>
+                </div>
+
+                <div class="form-group">
+                    <input type="password" th:field="*{pwd}" id="password" name="password" class="form-control" placeholder="Password" required>
+                    <div class="invalid-feedback">Please enter your password.</div>
+                </div>
+
+                <input type="submit" value="Login" class="btn btn-login" onclick="validateForm()"/>
+            </form>
+            <div class="mt-3">
+                <a href="forgot" class="forgot-signup">Forgot Password</a> | <a href="signup" class="forgot-signup">Sign Up</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and jQuery (place these scripts at the end of the body) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script>
+        function validateForm() {
+            var form = document.getElementById("loginForm");
+
+            if (form.checkValidity()) {
+                // You can add further logic here, like sending a request to the server for authentication.
+                alert("Form submitted successfully!");
+            } else {
+                // Bootstrap will handle displaying validation errors.
+            }
+        }
+    </script>
+
+</body>
+</html>
